@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --swiper-theme-color: #e8e8e8 !important;
+  --swiper-navigation-size: 24px !important;
+
+}
 .App {
   text-align: center;
 }
@@ -26,6 +35,46 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.swiper  {
+  max-height: 20rem;
+}
+
+.swiper-pagination-bullet {
+  background: #f09696 !important;
+  opacity: 1 !important;;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: white !important;;
+  opacity: 1 !important;;
+}
+
+#trending .swiper {
+  max-height: 12rem;
+}
+#trending .swiper-button-next {
+  background-color: #f90303;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+#trending .swiper-button-prev {
+  background-color: #f90303;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+#trending .swiper-button-disabled {
+  background-color: #f09696;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.mode-vertical-lr {
+  writing-mode: vertical-lr;
+}
+
+.mode-vertical-rl {
+  writing-mode: vertical-rl;
 }
 
 @keyframes App-logo-spin {
