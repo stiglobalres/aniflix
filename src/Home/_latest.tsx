@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import {  IUpcomingAnime, IUpcomingAnimeData } from "../common/interfaces/home";
 import {  KeyboardArrowDown, KeyboardArrowUp, SmartDisplay } from "@mui/icons-material";
-import RenderTiles, { typePropsType } from "../components/tiles";
+import RenderTiles from "../components/tiles";
 import {  Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -43,7 +43,7 @@ function LatestEpisode({data}:IUpcomingAnimeData) {
             </section>
 
             <section className="mx-8 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-               {data.slice(0,showMore).map((item:IUpcomingAnime) => <RenderTiles key={item.idani} data={item} /> ) }       
+               {data.slice(0,showMore).map((item:IUpcomingAnime) => <RenderTiles key={item.idani} id={item.idani} name={item.name} image={item.imgAnime } format={item.format} duration={item.release} /> ) }       
             </section>
             <div className="flex justify-center items-center h-8 mx-8 my-4">
                 <div className=" w-[50%]"><Divider /></div>

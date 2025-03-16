@@ -1,26 +1,22 @@
-import { IUpcomingAnime } from "../common/interfaces/home"
 import { Link } from "react-router-dom"
 
-interface propType {
-    data: IUpcomingAnime
-}
 interface typePropsType {
-    id: string,
-    name: string,
-    image: string,
-    format: string,
-    duration: string
+    id?: string,
+    name?: string,
+    image?: string,
+    format?: string | number,
+    duration?: string
 }
-const RenderTiles:React.FC<propType>=({ data })=>{
+const RenderTiles:React.FC<typePropsType>=({ id, name, image, format, duration })=>{
     return (
         <section>
-            <Link to={"/watch/"+data.idani} >
-                <img src={data.imgAnime} alt={data.name} className="object-cover h-40  w-28 sm:h-72 sm:w-48 rounded-md  " />
+            <Link to={"/details/"+id} >
+                <img src={image} alt={name} className="object-cover h-40  w-28 sm:h-72 sm:w-48 rounded-md  mb-1" />
             </Link>
-            <Link to={"/details/"+data.idani} title={data.name} >
-                <p className="text-sm font-bold line-clamp-1">{data.name}</p>
+            <Link to={"/details/"+id} title={name} >
+                <p className="text-sm font-bold line-clamp-1">{name}</p>
             </Link>
-            <p className="text-sm font-light">{data.format} - {data.release}</p>
+            <p className="text-sm font-light">{format} - {duration}</p>
         </section>
     )
 }

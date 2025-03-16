@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import { DOC_TITLE } from "./constant";
 
-function useTitle(title:string) {
+function UseTitle(title:string) {
+    document.title = title;
+    /*
     useEffect(()=>{
         const prevTitle = document.title;
-        document.title = DOC_TITLE + title;
+        document.title = title;
         return () =>{
             document.title =  prevTitle;
         }
     })
+    */
 }
 
-export default useTitle;
+export default UseTitle;

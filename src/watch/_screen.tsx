@@ -35,14 +35,6 @@ function Screen({id}: propType) {
         getAnimeID(id);
     },[])
 
-    useEffect(()=>{
-        getServer();
-    },[dubbedFlag])
-
-    useEffect(()=>{
-        getServer();
-   },[serverlist])
-
     const getAnimeID = async(id: string)=>{
        let animeID:number  = getID(id,'-');
        getEpisodeData(animeID);
@@ -50,6 +42,7 @@ function Screen({id}: propType) {
     const getServerData = async(id:number) => {
         let data:IServerListType =  await WatchApi(id);
         setServerList(data);
+       // getServer();
     }
 
     const getEpisodeData =async(id: number) => {
@@ -58,18 +51,19 @@ function Screen({id}: propType) {
     }
 
     const getAnimeLink=async(id:number)=>{
-        let data = await getVideo(id);
+       // let data = await getVideo(id);
     }
 
     const dubswitch=(event: ChangeEvent<HTMLInputElement>)=>{
         setDubbedFlag(event.target.checked)
         setLoadingVid(true);
+        //getServer();
     }
 
     const loadAnime =(ev: React.MouseEvent<HTMLButtonElement>, episode:IEpisode)=>{
         setEpisode(episode);
         let id:number = getID(episode.epId,'=');
-        getServerData(id);
+        //getServerData(id);
     }
 
     const getServer=()=>{
@@ -77,7 +71,7 @@ function Screen({id}: propType) {
         let server: IServerType | undefined;
         servers = (dubbedFlag) ? serverlist.dub!: serverlist.sub!;
         if(servers.length) {
-             server = servers.filter(x=> typeof x !== undefined).shift();
+             server = servers.filter(x=> typeof x === undefined).shift();
              if(server !== undefined) {
                 getAnimeLink(Number(server.srcId))
              }
